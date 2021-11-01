@@ -24,7 +24,7 @@ jobs:
         cache: maven
     - name: Step 3 - Build with Maven
       run:
-         cd /my-app
+         cd my-app
          mvn -B package --file pom.xml
     - name: Step 4 - List the current directory
       run: la -a
