@@ -23,7 +23,7 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Step 3 - Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package -p pom.xml
     - name: Step 4 - List the current directory
       run: la -a
     - name: Step 5 - List the files in Target folder
