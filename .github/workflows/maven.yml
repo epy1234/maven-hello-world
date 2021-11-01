@@ -24,6 +24,9 @@ jobs:
       run: cd my-app &&
            mvn -B package -f pom.xml &&
            java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
+    - name: Step 4 - Run Hello World
+      run: cd my-app &&
+           java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
     
     
         
