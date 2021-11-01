@@ -31,9 +31,7 @@ jobs:
            
     - name: increase version by one
       run : cd my-app/target &&
-          version=$(mvn -q -U -Dexpression=project.version -DforceStdout maven-help-plugin:evaluate) &&
-          version=$(echo ${version} |  awk -F'.' '{print $1"."$2"."$3+1}' |  sed s/[.]$//) &&
-          mvn -U versions:set -DnewVersion=${version}
+          mvn -q -U -Dexpression=project.version -DforceStdout maven-help-plugin:evaluate) 
     - name: Step 4 - List files in my-app directory
       run: ls -a my-app/target
     
