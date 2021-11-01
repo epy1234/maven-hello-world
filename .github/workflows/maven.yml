@@ -27,6 +27,6 @@ jobs:
       run: ls -a
     - name: Step 5 - List the files in Target folder
       run: 
-        cd my-app\target &&
+        cd my-app/target &&
         ls -a
       
