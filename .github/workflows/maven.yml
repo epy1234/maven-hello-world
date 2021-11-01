@@ -28,6 +28,14 @@ jobs:
     - name: Step 5 - Run Hello World
       run: cd my-app &&
            java -cp target/my-app-1.0.0.jar com.mycompany.app.App
+           
+    - name: increase version by one
+      run : cd my-app/target &&
+          version=$(mvn -q -U -Dexpression=project.version -DforceStdout maven-help-plugin:evaluate) &&
+          version=$(echo ${version} |  awk -F'.' '{print $1"."$2"."$3+1}' |  sed s/[.]$//) &&
+          mvn -U versions:set -DnewVersion=${version}
+    - name: Step 4 - List files in my-app directory
+      run: ls -a my-app/target
     
     
         
