@@ -43,6 +43,59 @@
   </dependencies>
  <build>
     <plugins>
+	    <plugin>
+    <groupId>io.fabric8</groupId>
+    <artifactId>docker-maven-plugin</artifactId>
+    <version>0.21.0</version>
+    <extensions>true</extensions>
+    <configuration>
+        <!-- a) use "docker login" up front to store the credentials on the local machine. -->
+        <!-- or b) comment in the following snippet: -->
+        <!--<authConfig>-->
+            <!--<username>phauer</username>-->
+            <!--<password>docker123</password>-->
+        <!--</authConfig>-->
+        <images>
+            <image>
+                <name>${docker.repository.name}:${version.number}</name>
+                <alias>${project.artifactId}</alias>
+                <build>
+                    <from>openjdk:8-alpine</from>
+                    <tags><!-- define additional tags for the image -->
+                        <tag>latest</tag>
+                    </tags>
+                    <assembly>
+                        <descriptorRef>artifact</descriptorRef>
+                    </assembly>
+                    <ports>
+                        <port>8080</port>
+                    </ports>
+                    <cmd>
+                        <shell>
+                            java -jar /maven/${project.build.finalName}.jar
+                        </shell>
+                    </cmd>
+                </build>
+            </image>
+        </images>
+    </configuration>
+    <executions>
+        <execution>
+            <id>build-docker-image</id>
+            <phase>package</phase>
+            <goals>
+                <goal>build</goal>
+            </goals>
+        </execution>
+        <execution>
+            <id>push-docker-image-to-registry</id>
+            <phase>deploy</phase>
+            <goals>
+                <goal>push</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
 	     <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -220,4 +273,6 @@
       </build>
     </profile>
   </profiles>
+	<docker.repository.name>phauer/${project.artifactId}</docker.repository.name>
+
 </project>
