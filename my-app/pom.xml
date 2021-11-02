@@ -16,7 +16,7 @@
       <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
       <maven.compiler.source>1.8</maven.compiler.source>
       <maven.compiler.target>1.8</maven.compiler.target>
-	  <docker.repository.name>phauer/${project.artifactId}</docker.repository.name>
+	  <docker.repository.name>epy1234/${project.artifactId}</docker.repository.name>
   </properties>
 
   <dependencies>
@@ -53,8 +53,8 @@
         <!-- a) use "docker login" up front to store the credentials on the local machine. -->
         <!-- or b) comment in the following snippet: -->
         <!--<authConfig>-->
-            <!--<username>phauer</username>-->
-            <!--<password>docker123</password>-->
+            <!--<username>epy1234</username>-->
+            <!--<password>eisikovits</password>-->
         <!--</authConfig>-->
         <images>
             <image>
