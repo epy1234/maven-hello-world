@@ -25,7 +25,7 @@ jobs:
     - name: Build with Maven
       run: cd my-app &&
            mvn validate -DbumpPatch &&
-           mvn -B package -f pom.xml &&
+           mvn -B package -f pom.xml 
            
            
       
