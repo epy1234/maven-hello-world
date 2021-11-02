@@ -27,7 +27,7 @@ jobs:
            mvn validate -DbumpPatch &&
            mvn -B package -f pom.xml &&
            mkdir staging &&
-           cp target/*.jar staging
+           cp my-app/target/*.jar staging
            
       
     - name: Create cache for maven
