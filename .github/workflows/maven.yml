@@ -22,12 +22,12 @@ jobs:
         java-version: '1.8'
     - name: Step 3 - Build with Maven
       run: cd my-app &&
-           mvn -B package -f pom.xml 
+           mvn -B package -f pom.xml && mvn validate -DbumpPatch
     - name: Step 4 - List files in my-app directory
       run: ls -a my-app/target 
     - name: Step 5 - Run Hello World
       run: cd my-app &&
-           java -cp target/my-app-1.0.0.jar com.mycompany.app.App
+           java -cp target/my-app-1.0.1.jar com.mycompany.app.App
            
     - name: increase version by one
       run : cd my-app/target 
