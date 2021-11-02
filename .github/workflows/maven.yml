@@ -26,8 +26,7 @@ jobs:
       run: cd my-app &&
            mvn validate -DbumpPatch &&
            mvn -B package -f pom.xml &&
-           mkdir staging &&
-           cp ./target/*.jar staging
+           
            
       
     - name: Create cache for maven
@@ -39,7 +38,9 @@ jobs:
         
     - name: List files in my-app directory
       run: ls -a my-app/target
-      
+    - name: List files in my-app directory
+      run: mkdir staging &&
+           cp my-app/target/*.jar staging
     - name: Run Hello World
       run: cd my-app &&
            java -cp target/my-app-1.0.1.jar com.mycompany.app.App    
