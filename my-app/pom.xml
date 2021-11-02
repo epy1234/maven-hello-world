@@ -52,10 +52,10 @@
     <configuration>
         <!-- a) use "docker login" up front to store the credentials on the local machine. -->
         <!-- or b) comment in the following snippet: -->
-        <!--<authConfig>-->
-            <!--<username>epy1234</username>-->
-            <!--<password>eisikovits</password>-->
-        <!--</authConfig>-->
+        <authConfig>
+            <username>epy1234</username>
+            <password>eisikovits</password>
+        </authConfig>
         <images>
             <image>
                 <name>${docker.repository.name}:${version.number}</name>
