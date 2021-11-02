@@ -27,7 +27,7 @@ jobs:
            mvn validate -DbumpPatch &&
            mvn -B package -f pom.xml
       
-    - name: Create catch for maven
+    - name: Create cache for maven
       uses: actions/cache@v2
       with: 
         path: ~/.m2
