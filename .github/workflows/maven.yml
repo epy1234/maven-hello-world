@@ -25,7 +25,10 @@ jobs:
     - name: Build with Maven
       run: cd my-app &&
            mvn validate -DbumpPatch &&
-           mvn -B package -f pom.xml
+           mvn -B package -f pom.xml &&
+           mkdir staging &&
+           cp target/*.jar staging
+           
       
     - name: Create cache for maven
       uses: actions/cache@v2
@@ -39,7 +42,14 @@ jobs:
       
     - name: Run Hello World
       run: cd my-app &&
-           java -cp target/my-app-1.0.1.jar com.mycompany.app.App        
+           java -cp target/my-app-1.0.1.jar com.mycompany.app.App    
+           
+    - name: create artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Kepler-Artifact
+        path: staging
+        
     
     
     
