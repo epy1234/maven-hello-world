@@ -28,7 +28,7 @@ jobs:
            mvn -B package -f pom.xml
       
     - name: Create catch for maven
-      uses: action/catch@v2
+      uses: action/cache@v2
       with: 
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
