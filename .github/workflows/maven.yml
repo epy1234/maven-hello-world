@@ -22,7 +22,7 @@ jobs:
         java-version: '1.8'
     - name: Step 3 - Build with Maven
       run: cd my-app &&
-           mvn -B package -f pom.xml && mvn -q -U -Dexpression=project.version 
+           mvn -B package -f pom.xml && mvn -q -U -Dexpression=project.version -DforceStdout maven-help-plugin:evaluate
     - name: Step 4 - List files in my-app directory
       run: ls -a my-app/target 
     - name: Step 5 - Run Hello World
