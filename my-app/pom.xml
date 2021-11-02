@@ -58,7 +58,8 @@
         </authConfig>
         <images>
             <image>
-                <name>${docker.repository.name}:${version.number}</name>
+                <name>${docker.repository.name}:${project.version}</name>
+		 <!-- <name>${docker.repository.name}:${version.number}</name> -->
                 <alias>${project.artifactId}</alias>
                 <build>
                     <from>openjdk:8-alpine</from>
