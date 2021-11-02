@@ -40,7 +40,7 @@ jobs:
       run: ls -a my-app/target
     - name: List files in my-app directory
       run: mkdir staging &&
-           cp my-app/target/*.jar staging
+           cp my-app/target/m*.jar staging
     - name: Run Hello World
       run: cd my-app &&
            java -cp target/my-app-1.0.1.jar com.mycompany.app.App    
