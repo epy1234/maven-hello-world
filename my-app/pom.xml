@@ -63,9 +63,9 @@
                 <alias>${project.artifactId}</alias>
                 <build>
                     <from>openjdk:8-alpine</from>
-                    <!-- <tags> define additional tags for the image -->
-                    <!--   <tag>latest</tag> -->
-                    <!-- </tags> -->
+                    <tags> <!-- defines additional tags -->
+                      <tag>latest</tag>
+                    </tags> 
                     <assembly>
                         <descriptorRef>artifact</descriptorRef>
                     </assembly>
