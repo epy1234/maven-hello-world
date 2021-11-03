@@ -37,7 +37,7 @@ jobs:
         restore-keys: ${{ runner.os }}-m2
         
     - name: List files in my-app directory
-      run: ls -a my-app/target/docker/epy1234/my-app
+      run: ls -a my-app/target/docker/epy1234/my-app/1.0.1
     - name: List files in my-app directory
       run: mkdir staging &&
            cp my-app/target/m*.jar staging
