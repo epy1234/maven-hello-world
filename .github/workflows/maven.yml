@@ -26,7 +26,7 @@ jobs:
         
     - name: Build with Maven
       run: cd my-app &&
-           mvn -U versions:set -DnewVersion=$GITHUB_RUN_NUMBER
+           mvn -U versions:set -DnewVersion=$GITHUB_RUN_NUMBER &&
            mvn -B package -f pom.xml 
            
            
