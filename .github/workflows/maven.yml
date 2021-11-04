@@ -49,9 +49,10 @@ jobs:
       run : docker build -t epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER . &&
             docker images
       
-      - name: Push image to DockerHub 
+    - name: Push image to DockerHub 
       run : docker push epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER .
             
+      
     - name: Run Docker image 
       run : docker run epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER $$
             docker ps
