@@ -37,7 +37,7 @@ jobs:
            cp my-app/target/m*.jar staging
     - name: Run Hello World
       run: cd my-app &&
-           java -cp target/my-app-1.0.0.jar com.mycompany.app.App    
+           java -cp target/my-app-1.0-SNAPSHOT com.mycompany.app.App    
            
     - name: create artifact
       uses: actions/upload-artifact@v2
