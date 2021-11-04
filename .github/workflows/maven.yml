@@ -55,7 +55,7 @@ jobs:
             
       
     - name: Step 5 - g) Run Docker image 
-      run : docker pull epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER &&
+      run : docker run epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER &&
             docker ps -a  
             
     - name: Pick Me Home!!!
