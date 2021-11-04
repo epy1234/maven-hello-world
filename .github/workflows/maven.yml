@@ -31,7 +31,7 @@ jobs:
     
         
     - name: List files in my-app directory
-      run: cat my-app/target/
+      run: ls -a my-app/target/
     - name: List files in my-app directory
       run: mkdir staging &&
            cp my-app/target/m*.jar staging
