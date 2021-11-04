@@ -41,9 +41,9 @@ jobs:
     - name: Copy artifact to folder staging 
       run: mkdir staging &&
            cp my-app/target/m*.jar staging
-    #- name: Run Hello World
-    #  run: cd my-app &&
-    #       java -cp target/my-app-1.0.$GITHUB_RUN_NUMBER.jar com.mycompany.app.App    
+    - name: Run Hello World
+      run: cd my-app &&
+           java -cp target/my-app-1.0.$GITHUB_RUN_NUMBER.jar com.mycompany.app.App    
      
     - name: Create a Docker image 
       run : docker build -t epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER . &&
