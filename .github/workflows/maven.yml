@@ -24,20 +24,14 @@ jobs:
         
     - name: Build with Maven
       run: cd my-app &&
-           mvn validate -DbumpPatch &&
            mvn -B package -f pom.xml 
            
            
       
-    - name: Create cache for maven
-      uses: actions/cache@v2
-      with: 
-        path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-m2
+    
         
     - name: List files in my-app directory
-      run: cat my-app/target/docker/epy1234/my-app/1.0.1/build/Dockerfile
+      run: cat my-app/target/
     - name: List files in my-app directory
       run: mkdir staging &&
            cp my-app/target/m*.jar staging
