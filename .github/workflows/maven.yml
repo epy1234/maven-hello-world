@@ -10,7 +10,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      VER_NUMBER: $GITHUB_RUN_NUMBER-$GITHUB_RUN_NUMBER + 1
+      VER_NUMBER: eval($GITHUB_RUN_NUMBER-$GITHUB_RUN_NUMBER + 1)
     steps:
     - name: Checking main branch from GitHub
       uses: actions/checkout@v2
