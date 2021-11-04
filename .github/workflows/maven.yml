@@ -50,12 +50,14 @@ jobs:
             docker images
       
     - name: Push image to DockerHub 
-      run : docker push epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER 
+      run : docker push epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER &&
+            docker rmi epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER
             
       
     - name: Run Docker image 
-      run : docker run epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER $$
+      run : docker pull epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER &&
             docker ps
+            
            
     #- name: create artifact
     #  uses: actions/upload-artifact@v2
