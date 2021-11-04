@@ -21,9 +21,11 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: '1.8'
+    - name: echo number of process
+      run : echo $GITHUB_RUN_NUMBER
         
-    - name: Build with Maven
-      run: cd my-app &&
+   # - name: Build with Maven
+   #   run: cd my-app &&
            mvn -B package -f pom.xml 
            
            
