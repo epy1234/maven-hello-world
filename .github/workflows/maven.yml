@@ -27,7 +27,7 @@ jobs:
     - name: Step 5 - a) b) c) :Compile and Package with Maven and Increase Jar version
       run: |
            cd my-app 
-           mvn -U versions:set -DnewVersion=1.0.$GITHUB_RUN_NUMBER-($GITHUB_RUN_NUMBER-1)
+           mvn -U versions:set -DnewVersion=1.0.$GITHUB_RUN_NUMBER
            mvn -B package -f pom.xml 
      
     - uses: actions/cache@v1
@@ -53,22 +53,22 @@ jobs:
     - name: Run Hello World
       run: |
            cd my-app 
-           java -cp target/my-app-1.0.$GITHUB_RUN_NUMBER-($GITHUB_RUN_NUMBER-1).jar com.mycompany.app.App    
+           java -cp target/my-app-1.0.$GITHUB_RUN_NUMBER.jar com.mycompany.app.App    
      
     - name: Step 5 - e) Create a Docker image 
       run : |
-            docker build -t epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER-($GITHUB_RUN_NUMBER-1) . 
+            docker build -t epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER . 
             docker images
       
     - name: Step 5 - f) Push image to DockerHub 
       run : |
-            docker push epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER-($GITHUB_RUN_NUMBER-1)
-            docker rmi epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER-($GITHUB_RUN_NUMBER-1)
+            docker push epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER
+            docker rmi epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER
             
       
     - name: Step 5 - g) Run Docker image 
       run : |
-            docker run epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER-($GITHUB_RUN_NUMBER-1)
+            docker run epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER
             docker ps -a  
             
     - name: Pick Me Home!!!
