@@ -1,6 +1,6 @@
 FROM openjdk:8-jre-alpine3.9
-
-RUN useradd -ms /bin/bash newuser
+# adduser -D -g '' app
+RUN adduser -ms /bin/bash newuser
 
 USER newuser
 
