@@ -45,6 +45,9 @@ jobs:
     - name: Create a Docker image 
       run : docker build -t epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER . &&
             docker images
+            
+    - name: Run Docker image 
+      run : run epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER 
            
     #- name: create artifact
     #  uses: actions/upload-artifact@v2
