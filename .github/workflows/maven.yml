@@ -43,7 +43,7 @@ jobs:
     #       java -cp target/my-app-1.0.$GITHUB_RUN_NUMBER.jar com.mycompany.app.App    
      
     - name: Create a Docker image 
-      run : docker build -t epy1234/ep-phone-Home:1.0.$GITHUB_RUN_NUMBER . &&
+      run : docker build -t epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER . &&
             docker ps
            
     #- name: create artifact
