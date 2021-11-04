@@ -24,9 +24,10 @@ jobs:
     - name: echo number of process
       run : echo $GITHUB_RUN_NUMBER
         
-   # - name: Build with Maven
-   #   run: cd my-app &&
-   #        mvn -B package -f pom.xml 
+    - name: Build with Maven
+      run: cd my-app &&
+           mvn -U versions:set -DnewVersion=$GITHUB_RUN_NUMBER
+           mvn -B package -f pom.xml 
            
            
       
