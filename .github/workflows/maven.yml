@@ -26,7 +26,7 @@ jobs:
         
     - name: Build with Maven
       run: cd my-app &&
-           mvn -U versions:set -DnewVersion=$GITHUB_RUN_NUMBER &&
+           mvn -U versions:set -DnewVersion=1.0.$GITHUB_RUN_NUMBER &&
            mvn -B package -f pom.xml 
            
            
@@ -40,7 +40,7 @@ jobs:
            cp my-app/target/m*.jar staging
     - name: Run Hello World
       run: cd my-app &&
-           java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App    
+           java -cp target/my-app-1.0-1.0.$GITHUB_RUN_NUMBER.jar com.mycompany.app.App    
            
     - name: create artifact
       uses: actions/upload-artifact@v2
