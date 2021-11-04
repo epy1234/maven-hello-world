@@ -25,15 +25,24 @@ jobs:
       run : echo $GITHUB_RUN_NUMBER
         
     - name: Step 5 - a) b) c) :Compile and Package with Maven and Increase Jar version
-      run: cd my-app &&
-           mvn -U versions:set -DnewVersion=1.0.$GITHUB_RUN_NUMBER &&
+      run: |
+           cd my-app 
+           mvn -U versions:set -DnewVersion=1.0.$GITHUB_RUN_NUMBER-($GITHUB_RUN_NUMBER-1)
            mvn -B package -f pom.xml 
+     
+    - uses: actions/cache@v1
+      with:
+           path: ~/.m2/repository
+           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+           restore-keys: |
+             ${{ runner.os }}-maven-
    
     - name: List files in my-app directory
       run: ls -a my-app/target/
     - name: Copy artifact to folder staging 
-      run: mkdir staging &&
-           cp my-app/target/m*.jar staging
+      run:  |
+           |mkdir staging
+            cp my-app/target/m*.jar staging
            
     - name: Step 5 - d) Create artifact
       uses: actions/upload-artifact@v2
@@ -42,20 +51,24 @@ jobs:
         path: staging
         
     - name: Run Hello World
-      run: cd my-app &&
-           java -cp target/my-app-1.0.$GITHUB_RUN_NUMBER.jar com.mycompany.app.App    
+      run: |
+           cd my-app 
+           java -cp target/my-app-1.0.$GITHUB_RUN_NUMBER-($GITHUB_RUN_NUMBER-1).jar com.mycompany.app.App    
      
     - name: Step 5 - e) Create a Docker image 
-      run : docker build -t epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER . &&
+      run : |
+            docker build -t epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER-($GITHUB_RUN_NUMBER-1) . 
             docker images
       
     - name: Step 5 - f) Push image to DockerHub 
-      run : docker push epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER &&
-            docker rmi epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER
+      run : |
+            docker push epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER-($GITHUB_RUN_NUMBER-1)
+            docker rmi epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER-($GITHUB_RUN_NUMBER-1)
             
       
     - name: Step 5 - g) Run Docker image 
-      run : docker run epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER &&
+      run : |
+            docker run epy1234/ep-phone-home:1.0.$GITHUB_RUN_NUMBER-($GITHUB_RUN_NUMBER-1)
             docker ps -a  
             
     - name: Pick Me Home!!!
