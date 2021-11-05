@@ -27,7 +27,7 @@ jobs:
     
     - name: echo
       run: |
-           echo ::set-env name=GITHUB_RUN_NUMBER_WITH_OFFSET::$(($NUM+200))
+           echo ::set-env name=GITHUB_RUN_NUMBER_WITH_OFFSET::$((${{ env.VER_NUMBER }}+200))
            echo $GITHUB_RUN_NUMBER_WITH_OFFSET
           
     - name: Set up JDK 1.8
