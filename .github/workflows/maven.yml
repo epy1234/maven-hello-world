@@ -9,22 +9,26 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-      env:
-          NUM: ${{ github.run_number }}
-      run: |
-          echo ::set-env name=GITHUB_RUN_NUMBER_WITH_OFFSET::$(($NUM+200))
-    - run: echo $GITHUB_RUN_NUMBER_WITH_OFFSET
+      
+          
+     
     
     
     env:
       VER_NUMBER: $GITHUB_RUN_NUMBER
+      NUM: ${{ github.run_number }}
+      
     steps:
     - name: Checking main branch from GitHub
       uses: actions/checkout@v2
     
     - name: Login to DockerHub Registry
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-      
+    -name: echo
+      run: |
+          echo ::set-env name=GITHUB_RUN_NUMBER_WITH_OFFSET::$(($NUM+200))
+          echo $GITHUB_RUN_NUMBER_WITH_OFFSET
+          
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
       with:
