@@ -24,9 +24,10 @@ jobs:
     
     - name: Login to DockerHub Registry
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    
     - name: echo
       run: |
-          echo ::set-env name=GITHUB_RUN_NUMBER_WITH_OFFSET::$(($NUM+200))
+           echo ::set-env name=GITHUB_RUN_NUMBER_WITH_OFFSET::$(($NUM+200))
            echo $GITHUB_RUN_NUMBER_WITH_OFFSET
           
     - name: Set up JDK 1.8
@@ -37,9 +38,7 @@ jobs:
     
     - name: echo number of process
       run : echo ${{ env.VER_NUMBER }}
-      run: |
-          echo ::set-env name=GITHUB_RUN_NUMBER_WITH_OFFSET::$(($NUM+200))
-    - run: echo $GITHUB_RUN_NUMBER_WITH_OFFSET    
+   
     - name: Step 5 - a) b) c) :Compile and Package with Maven and Increase Jar version
       run: |
            cd my-app 
