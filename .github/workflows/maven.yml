@@ -38,7 +38,9 @@ jobs:
     
     
     - name: echo number of process
-      run : echo ${{ env.VER_NUMBER }}
+      run : |
+            echo ${{ env.VER_NUMBER }}
+            echo $GITHUB_RUN_NUMBER_WITH_OFFSET
    
     - name: Step 5 - a) b) c) :Compile and Package with Maven and Increase Jar version
       run: |
