@@ -15,6 +15,7 @@ jobs:
     
     
     env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
       VER_NUMBER: $GITHUB_RUN_NUMBER
       NUM: $GITHUB_RUN_NUMBER
       
