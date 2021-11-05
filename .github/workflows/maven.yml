@@ -31,8 +31,8 @@ jobs:
     - name: Login to DockerHub Registry
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
     
-    - name: Set Version number
-    - run: echo ::set-env name=VER_NUMBER_WITH_OFFSET::$((${{ env.VER_NUMBER }} - 143))
+    - name: Set version number
+      run: echo ::set-env name=VER_NUMBER_WITH_OFFSET::$((${{ env.VER_NUMBER }} - 143))
    
     - name: Step 5 - (a-b-c) - Compile and Package with Maven and Increase Jar version
       run: |
