@@ -16,7 +16,7 @@ jobs:
     
     env:
       VER_NUMBER: $GITHUB_RUN_NUMBER
-      NUM: ${{ github.run_number }}
+      NUM: $GITHUB_RUN_NUMBER
       
     steps:
     - name: Checking main branch from GitHub
