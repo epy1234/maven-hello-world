@@ -9,6 +9,13 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+      env:
+          NUM: ${{ github.run_number }}
+      run: |
+          echo ::set-env name=GITHUB_RUN_NUMBER_WITH_OFFSET::$(($NUM+200))
+    - run: echo $GITHUB_RUN_NUMBER_WITH_OFFSET
+    
+    
     env:
       VER_NUMBER: $GITHUB_RUN_NUMBER
     steps:
@@ -22,9 +29,13 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: '1.8'
+    
+    
     - name: echo number of process
       run : echo ${{ env.VER_NUMBER }}
-        
+      run: |
+          echo ::set-env name=GITHUB_RUN_NUMBER_WITH_OFFSET::$(($NUM+200))
+    - run: echo $GITHUB_RUN_NUMBER_WITH_OFFSET    
     - name: Step 5 - a) b) c) :Compile and Package with Maven and Increase Jar version
       run: |
            cd my-app 
